@@ -35,6 +35,8 @@ window.addEventListener("load", function() {
          faultyItems.style.visibility = "visible";
          pilotStatus.innerHTML = `Pilot ${pilotName} is ready to launch`;
          copilotStatus.innerHTML = `Co-pilot ${copilotName} is ready to launch`;
+         pilotStatus.style.color = 'green';
+         copilotStatus.style.color = 'green';
       }
        if (fuelLevel < 10000 && cargoMass > 10000) {
          document.getElementById('launchStatus').innerHTML ="Not Ready for launch";
@@ -47,17 +49,25 @@ window.addEventListener("load", function() {
          document.getElementById('faultyItems').style.visibility = 'visible';
          launchStatus.innerHTML = "Fuel level to low for launch";
          launchStatus.style.color = "red";
+         cargoStatus.style.color = 'green';
       }
       if (fuelLevel > 10000 && cargoMass < 10000) {
-         document.getElementById('launchStatus').innerHTML ="Ready for launch";
+         document.getElementById('launchStatus').innerHTML ="Ready for launch!";
+         document.getElementById('launchStatus').style.color = 'green';
          launchStatus.style.color = "green";
-         launchStatus.innerHTML = "Shuttle is ready for launch";
+         launchStatus.innerHTML = "Fuel level ready for launch";
+         cargoStatus.style.color = 'green';
+         cargoStatus.innerHTML = "Cargo mass low enough for launch";
+         
       }
-      if (cargoMass > 10000) {
+      if (cargoMass > 10000 && fuelLevel > 10000) {
+         document.getElementById('launchStatus').innerHTML ="Not Ready for launch";
+         document.getElementById('launchStatus').style.color = 'red';
          faultyItems.style.visibility = "visible";
          cargoStatus.innerHTML = "Too much mass for the shuttle to take off";
-         launchStatus.style.color = "red";
-         launchStatus.innerHTML = "Shuttle not ready for launch";
+         cargoStatus.style.color = 'red';
+         launchStatus.style.color = "green";
+         launchStatus.innerHTML = "Fuel level ready for launch";
       }
 
       // document.getElementById('faultyItems').style.visibility = 'visible';
